@@ -24,7 +24,7 @@
                     trMain.append('<th>Event Closed');
                 }
                 trMain.append('<td>' + obj.name + '</a></td>');
-                trMain.append("<td>" + obj.startDate + "</td>");
+                trMain.append("<td>" + new Date(obj.startDate) + "</td>");
                 trMain.append("<td>" + obj.locations[0].city + "</td>");
                 trMain.append("<td>" + obj.locations[0].state + "</td>");
                 $('table').append(trMain);
