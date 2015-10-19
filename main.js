@@ -9,7 +9,6 @@
             var sorted = data.events;
 
             sorted.sort(function(a, b) {
-                console.log("a,b: " + a.startDate);
                 return new Date(a.startDate) - new Date(b.startDate);
             });
             var k = 0;
@@ -37,38 +36,27 @@
         })
         .done(function() {
             $(":checkbox").on("change", function() {
-                console.log("here");
 
                 var checkboxValues = {};
                 $(":checkbox").each(function() {
-                    console.log("here each checkbox");
                     checkboxValues[this.id] = this.checked;
-                    console.log("ID:" + this.id + "Check:" + this.checked);
                 });
                 $.cookie('checkboxValues', checkboxValues, {
                     expires: 7,
                     path: '/'
                 })
-                console.log("checkboxVal: " + checkboxValues);
             });
 
             function repopulateCheckboxes() {
-                console.log("repopulate");
                 var checkboxValues = $.cookie('checkboxValues');
-                console.log(checkboxValues);
                 if (checkboxValues) {
                     Object.keys(checkboxValues).forEach(function(element) {
-
                         var checked = checkboxValues[element];
-                        console.log(checked);
-                        debugger;
                         $("#" + element).attr('checked', checked);
-                        //document.getElementById(element).checked = checked;
-                        // $('#' + element)[0].checked=true;
+
                     });
                 }
             }
-            //debugger;
             $.cookie.json = true;
             repopulateCheckboxes();
 
